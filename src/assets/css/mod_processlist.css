@@ -1,0 +1,90 @@
+table#processContainer {
+    display: block;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+table#processContainer td.header {
+    font-weight: bold;
+    background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.6);
+    color: var(--color_light_black);
+    text-align: center;
+}
+
+table#processContainer td.header:hover {
+    cursor: pointer;
+}
+
+table#processContainer td.pid {
+    width: 5vw;
+}
+
+table#processContainer td.name {
+    width: 12vw;
+}
+
+table#processContainer td.user {
+    width: 7vw;
+}
+
+table#processContainer td.cpu {
+    width: 3vw;
+    text-align: center;
+}
+
+table#processContainer td.mem{
+    width: 3vw;
+    text-align: center;
+
+}
+table#processContainer td.state {
+    width: 6vw;
+    text-align: center;
+}
+table#processContainer td.started {
+    width: 11vw;
+
+}
+
+table#processContainer td.runtime {
+    width: 5vw;
+}
+
+/* 加载动画 */
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid var(--color_b); /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin: 0; /* 移除自动边距 */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 鼠标悬停效果 */
+#processList tr:hover {
+    background-color: rgba(var(--color_r), var(--color_g), var(--color_b), 0.2); /* 使用主题色作为背景 */
+    cursor: pointer;
+}
+
+/* 主界面 Top Processes 列表的鼠标悬停效果 */
+#mod_toplist_table .toplist-row:hover {
+    background-color: rgba(var(--color_r), var(--color_g), var(--color_b), 0.2); /* 使用主题色作为背景 */
+    cursor: pointer;
+}
+
+/* 确保表格行组默认隐藏，由JS控制显示 */
+#processList {
+    display: none;
+}
+
+/* 调整加载文本样式 */
+#processListLoading p {
+    margin: 0; /* 移除默认边距 */
+    font-size: 0.8em;
+}
