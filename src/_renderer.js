@@ -243,7 +243,7 @@ function displayLine() {
 
     switch(true) {
         case i === 2:
-            bootScreen.innerHTML += `eDEX-UI Kernel version ${electron.remote.app.getVersion()} boot at ${Date().toString()}; root:xnu-1699.22.73~1/RELEASE_X86_64`;
+            bootScreen.innerHTML += `XDo-UI Kernel version ${electron.remote.app.getVersion()} boot at ${Date().toString()}; root:xnu-1699.22.73~1/RELEASE_X86_64`;
         case i === 4:
             setTimeout(displayLine, 500);
             break;
@@ -288,7 +288,7 @@ async function displayTitleScreen() {
 
     document.body.setAttribute("class", "");
     bootScreen.setAttribute("class", "center");
-    bootScreen.innerHTML = "<h1>eDEX-UI</h1>";
+    bootScreen.innerHTML = "<h1>XDo-UI</h1>";
     let title = document.querySelector("section > h1");
 
     await _delay(200);
@@ -487,7 +487,7 @@ async function initUI() {
     window.onmouseup = e => {
         if (window.keyboard.linkedToTerm) window.term[window.currentTerm].term.focus();
     };
-    window.term[0].term.writeln("\033[1m"+`Welcome to eDEX-UI v${electron.remote.app.getVersion()} - Electron v${process.versions.electron}`+"\033[0m");
+    window.term[0].term.writeln("\033[1m"+`Welcome to XDo-UI v${electron.remote.app.getVersion()} - Electron v${process.versions.electron}`+"\033[0m");
 
     await _delay(100);
 
@@ -802,7 +802,7 @@ window.openSettings = async () => {
             {label: "Open in External Editor", action:`electron.shell.openPath('${settingsFile}');electronWin.minimize();`},
             {label: "Save to Disk", action: "window.writeSettingsFile()"},
             {label: "Reload UI", action: "window.location.reload(true);"},
-            {label: "Restart eDEX", action: "electron.remote.app.relaunch();electron.remote.app.quit();"}
+            {label: "Restart XDo", action: "electron.remote.app.relaunch();electron.remote.app.quit();"}
         ]
     }, () => {
         // Link the keyboard back to the terminal

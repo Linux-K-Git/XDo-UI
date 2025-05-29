@@ -1,8 +1,8 @@
 {
-  "name": "edex-ui",
-  "productName": "Linux-K-eDEX-UI",
+  "name": "xdo-ui",
+  "productName": "Linux-K-XDo-UI",
   "version": "2.2.9",
-  "description": "eDEX-UI sci-fi interface",
+  "description": "XDo-UI sci-fi interface",
   "keywords": [
     "desktop",
     "sci-fi",
@@ -14,16 +14,16 @@
   "main": "_boot.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GitSquared/edex-ui.git"
+    "url": "git+https://github.com/Linux-K-Git/XDo-UI.git"
   },
-  "author": "Gabriel 'Squared' SAILLARD <gabriel@saillard.dev> (https://gaby.dev)",
+  "author": "Linux-K https://github.com/Linux-K-Git/",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/GitSquared/edex-ui/issues"
+    "url": "https://github.com/Linux-K-Git/XDo-UI/issues"
   },
-  "homepage": "https://github.com/GitSquared/edex-ui#readme",
+  "homepage": "https://github.com/Linux-K-Git/XDo-UI#readme",
   "dependencies": {
-    "@electron/remote": "^1.2.2",
+    "@electron/remote": "^1.1.2",
     "augmented-ui": "^1.1.2",
     "color": "3.2.1",
     "ffi-napi": "^4.0.3",

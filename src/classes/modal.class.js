@@ -116,7 +116,8 @@ class Modal {
         let draggedModal = document.getElementById(`modal_${this.id}`);
         let dragTarget = document.querySelector(`div#modal_${this.id} > h1:first-child`);
 
-        draggedModal.zindex = draggedModal.getAttribute("style");
+        // 修复：正确获取z-index值
+        draggedModal.zindex = draggedModal.style.zIndex || window.getComputedStyle(draggedModal).zIndex;
 
         // Wait for correct rendering of medias and such before calculating rect size
         setTimeout(() => {
@@ -130,7 +131,8 @@ class Modal {
             draggedModal.lastMouseX = e.clientX;
             draggedModal.lastMouseY = e.clientY;
 
-            draggedModal.setAttribute("style", `${draggedModal.zindex}background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：正确设置CSS样式
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5); left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
 
             window.addEventListener("mousemove", modalMousemoveHandler);
             window.addEventListener("mouseup", modalMouseupHandler);
@@ -141,11 +143,13 @@ class Modal {
             draggedModal.lastMouseX = e.clientX;
             draggedModal.lastMouseY = e.clientY;
 
-            draggedModal.setAttribute("style", `${draggedModal.zindex}background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：正确设置CSS样式
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5); left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
         }
         function modalMouseupHandler(e) {
             window.removeEventListener("mousemove", modalMousemoveHandler);
-            draggedModal.setAttribute("style", `${draggedModal.zindex}left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：移除拖拽时的背景色
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
 
             window.removeEventListener("mouseup", modalMouseupHandler);
         }
@@ -156,7 +160,8 @@ class Modal {
             draggedModal.lastMouseX = e.changedTouches[0].clientX;
             draggedModal.lastMouseY = e.changedTouches[0].clientY;
 
-            draggedModal.setAttribute("style", `${draggedModal.zindex}background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：正确设置CSS样式
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5); left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
 
             window.addEventListener("touchmove", modalTouchmoveHandler);
             window.addEventListener("touchend", modalTouchendHandler);
@@ -167,11 +172,13 @@ class Modal {
             draggedModal.lastMouseX = e.changedTouches[0].clientX;
             draggedModal.lastMouseY = e.changedTouches[0].clientY;
 
-            draggedModal.setAttribute("style", `${draggedModal.zindex}background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：正确设置CSS样式
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5); left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
         }
         function modalTouchendHandler(e) {
             window.removeEventListener("touchmove", modalTouchmoveHandler);
-            draggedModal.setAttribute("style", `${draggedModal.zindex}left: ${draggedModal.posX}px;top: ${draggedModal.posY}px;`);
+            // 修复：移除拖拽时的背景色
+            draggedModal.setAttribute("style", `z-index: ${draggedModal.zindex}; left: ${draggedModal.posX}px; top: ${draggedModal.posY}px;`);
 
             window.removeEventListener("touchend", modalTouchendHandler);
         }
