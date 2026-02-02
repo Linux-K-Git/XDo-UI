@@ -18,7 +18,8 @@
 
 XDo-UI is a fullscreen, cross-platform terminal emulator and system monitor that looks and feels like a sci-fi computer interface.
 XDo-UI 是一个全屏、跨平台的终端模拟器和系统监视器，其外观和感觉就像一个科幻电脑界面。
-
+![XDo-UI](media/8add70d4-0fef-41e1-b188-078038789b7b.png)
+![XDo-UI](media/2657a229-d59c-4cbc-956d-5557ed6c21de.png)
 XDo-UI inherits from the archived project eDEX-UI (<https://github.com/GitSquared/edex-ui/releases>), but due to excessive code modifications, a new project was created.
 XDo-UI 继承于已存档项目 eDEX-UI (<https://github.com/GitSquared/edex-ui/releases>)，但由于修改的代码部分过多，遂新建项目。
 
@@ -121,6 +122,8 @@ On Windows:
 
 Note: Due to native modules, you can only build targets for the host OS you are using.
 注意：由于原生模块，您只能为您正在使用的主机操作系统构建目标。
+Statement: The tests have only been confirmed to build properly on Windows; please test on other operating systems yourself.
+声明：经过测试的只有在Windows上才能正常构建，其他操作系统请自行测试。
 
 - `npm install` (NOT `install-linux` or `install-windows`)
 - `npm run build:win` (Windows)
