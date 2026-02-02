@@ -1,0 +1,352 @@
+/* 隐藏系统默认鼠标 */
+body {
+    cursor: none !important;
+}
+
+/* 为所有可交互元素隐藏鼠标 */
+* {
+    cursor: none !important;
+}
+
+/* 鼠标光标动效样式 */
+.custom-cursor {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+.custom-cursor .cursor-center {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+.custom-cursor .cursor-corner {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 窗口选择器动效样式 */
+.window-selector-overlay {
+    animation: fadeIn 0.3s ease;
+    z-index: 999999 !important;
+    isolation: isolate;
+    contain: layout style paint;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+    }
+}
+
+.window-preview {
+    position: relative;
+    overflow: hidden;
+    z-index: 1000000 !important;
+    isolation: isolate;
+    contain: layout style paint;
+    transform-style: preserve-3d;
+}
+
+.window-preview::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(74, 158, 255, 0.3), 
+        transparent, 
+        rgba(74, 158, 255, 0.3), 
+        transparent
+    );
+    background-size: 400% 400%;
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+.window-preview:hover::before,
+.window-preview.selected::before {
+    opacity: 1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.window-preview:hover {
+    transform: scale(0.95) !important;
+}
+
+.window-preview.selected {
+    animation: selectedPulse 1s ease infinite;
+}
+
+@keyframes selectedPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px var(--color_light_blue, #4a9eff), 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--color_light_blue, #4a9eff), 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* 模块悬停增强效果 */
+.cursor-target {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursor-target::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(74, 158, 255, 0.1), 
+        rgba(138, 43, 226, 0.1), 
+        rgba(255, 20, 147, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.cursor-target:hover::before {
+    opacity: 1;
+}
+
+.cursor-target:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 信息模块独立窗口动画效果 */
+#mod_clock, #mod_sysinfo, #mod_hardwareInspector,
+#mod_cpuinfo, #mod_ramwatcher, #mod_toplist,
+#mod_netstat, #mod_globe, #mod_conninfo {
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+#mod_clock:hover, #mod_sysinfo:hover, #mod_hardwareInspector:hover,
+#mod_cpuinfo:hover, #mod_ramwatcher:hover, #mod_toplist:hover,
+#mod_netstat:hover, #mod_globe:hover, #mod_conninfo:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(var(--color_r), var(--color_g), var(--color_b), 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);
+    background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.05);
+}
+
+/* 模块点击动画 */
+#mod_clock:active, #mod_sysinfo:active, #mod_hardwareInspector:active,
+#mod_cpuinfo:active, #mod_ramwatcher:active, #mod_toplist:active,
+#mod_netstat:active, #mod_globe:active, #mod_conninfo:active {
+    transform: translateY(-2px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* 模块内容动画增强 */
+#mod_clock *, #mod_sysinfo *, #mod_hardwareInspector *,
+#mod_cpuinfo *, #mod_ramwatcher *, #mod_toplist *,
+#mod_netstat *, #mod_globe *, #mod_conninfo * {
+    transition: all 0.3s ease;
+}
+
+/* 模块悬停时内容微调 */
+#mod_clock:hover h1, #mod_sysinfo:hover h1, #mod_hardwareInspector:hover h1,
+#mod_cpuinfo:hover h1, #mod_ramwatcher:hover h1, #mod_toplist:hover h1,
+#mod_netstat:hover h1, #mod_globe:hover h1, #mod_conninfo:hover h1 {
+    color: rgba(var(--color_r), var(--color_g), var(--color_b), 1);
+    text-shadow: 0 0 10px rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);
+}
+
+/* 焦点窗口动效 */
+@keyframes focusWindow {
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px var(--color_light_blue, #4a9eff);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+.window-focused {
+    animation: focusWindow 0.5s ease;
+}
+
+/* 粒子效果背景 */
+.particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(74, 158, 255, 0.3);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.particle:nth-child(2n) {
+    animation-delay: -2s;
+    background: rgba(138, 43, 226, 0.3);
+}
+
+.particle:nth-child(3n) {
+    animation-delay: -4s;
+    background: rgba(255, 20, 147, 0.3);
+}
+
+.particle:nth-child(4n) {
+    animation-delay: -6s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(5n) {
+    animation-delay: -8s;
+    animation-duration: 8s;
+}
+
+/* 模块加载动画 */
+@keyframes moduleLoad {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.module-loading {
+    animation: moduleLoad 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 响应式动画 */
+@media (prefers-reduced-motion: reduce) {
+    .custom-cursor .cursor-center {
+        animation: none;
+    }
+    
+    .window-preview::before {
+        animation: none;
+    }
+    
+    .window-preview.selected {
+        animation: none;
+    }
+    
+    .particle {
+        animation: none;
+        opacity: 0;
+    }
+    
+    .cursor-target {
+        transition: none;
+    }
+    
+    .window-preview {
+        transition: transform 0.1s ease;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    .custom-cursor .cursor-center {
+        background: #ffffff;
+        box-shadow: 0 0 0 2px #000000;
+    }
+    
+    .custom-cursor .cursor-corner {
+        border-color: #ffffff !important;
+        filter: drop-shadow(0 0 2px #000000);
+    }
+    
+    .window-preview {
+        border-color: #ffffff !important;
+    }
+}
+
+/* 暗色主题增强 */
+@media (prefers-color-scheme: dark) {
+    .particle {
+        background: rgba(74, 158, 255, 0.4);
+    }
+    
+    .particle:nth-child(2n) {
+        background: rgba(138, 43, 226, 0.4);
+    }
+    
+    .particle:nth-child(3n) {
+        background: rgba(255, 20, 147, 0.4);
+    }
+}

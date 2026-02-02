@@ -1,0 +1,45 @@
+{
+    "colors": {
+        "r": 120,
+        "g": 180,
+        "b": 255,
+        "black": "#020204",
+        "red": "#8b5a5a",
+        "green": "#4a6741",
+        "yellow": "#8b7355",
+        "blue": "#4a5f8b",
+        "magenta": "#7a4a8b",
+        "cyan": "#4a7a8b",
+        "white": "#e8e8f0",
+        "lightBlack": "#050508",
+        "lightRed": "#a67373",
+        "lightGreen": "#5a7a52",
+        "lightYellow": "#a68b66",
+        "lightBlue": "#5a73a6",
+        "lightMagenta": "#8f5aa6",
+        "lightCyan": "#5a8fa6",
+        "lightWhite": "#d0d0e0",
+        "light_black": "#08080c",
+        "grey": "#0a0a0f"
+    },
+    "cssvars": {
+        "font_main": "United Sans Medium",
+        "font_main_light": "United Sans Light"
+    },
+    "terminal": {
+        "fontFamily": "Fira Mono",
+        "cursorStyle": "block",
+        "foreground": "#b8c5d6",
+        "background": "#030306",
+        "cursor": "#7c9cff",
+        "cursorAccent": "#9bb3ff",
+        "selection": "rgba(124, 156, 255, 0.25)"
+    },
+    "globe": {
+        "base": "#030306",
+        "marker": "#7c9cff",
+        "pin": "#6a8caf",
+        "satellite": "#8fa6c7"
+    },
+    "injectCSS": ":root { --text-blue: #7c9cff; --text-purple: #9c7cff; --text-green: #7cff9c; --text-cyan: #7cffc9; --text-orange: #ffb366; --text-pink: #ff7cb3; --text-yellow: #fff066; --text-red: #ff7c7c; } #mod_cpuinfo, #mod_cpuinfo h3, #mod_cpuinfo .title, #mod_cpuinfo p, #mod_cpuinfo span { color: var(--text-blue) !important; } #mod_ramwatcher, #mod_ramwatcher h3, #mod_ramwatcher .title, #mod_ramwatcher p, #mod_ramwatcher span { color: var(--text-purple) !important; } #mod_conninfo, #mod_conninfo h3, #mod_conninfo .title, #mod_conninfo p, #mod_conninfo span { color: var(--text-green) !important; } #mod_filesystem, #mod_filesystem h3, #mod_filesystem .title, #mod_filesystem p, #mod_filesystem span, #mod_filesystem .filesystem-item { color: var(--text-cyan) !important; } #mod_toplist, #mod_toplist h3, #mod_toplist .title, #mod_toplist p, #mod_toplist span, #mod_toplist .toplist-row { color: var(--text-orange) !important; } #mod_sysinfo, #mod_sysinfo h3, #mod_sysinfo .title, #mod_sysinfo p, #mod_sysinfo span { color: var(--text-pink) !important; } #mod_clock, #mod_clock h3, #mod_clock .title, #mod_clock p, #mod_clock span { color: var(--text-yellow) !important; } #mod_netstat, #mod_netstat h3, #mod_netstat .title, #mod_netstat p, #mod_netstat span { color: var(--text-red) !important; } .toplist-row:hover { background: rgba(255, 179, 102, 0.1); } .progress-bar, .cpu-bar, .ram-bar { background: linear-gradient(90deg, var(--text-blue), var(--text-purple)); } .modal { background: rgba(3, 3, 6, 0.95); border: 2px solid var(--text-blue); box-shadow: 0 0 25px rgba(124, 156, 255, 0.3); } .filesystem-item:hover { background: rgba(124, 255, 201, 0.1); border-left: 2px solid var(--text-green); }"
+}
